@@ -1,17 +1,43 @@
-# stateless_lab_jay
+# Stateless Lab — Campus Student Directory
 
-A new Flutter project.
+**Name:** Jay Aguelo (`aguelo`)
+**Activity:** StatelessWidget Lab — Campus Student Directory
+**Framework:** Flutter (Material 3)
 
-## Getting Started
+![App screenshot](screenshots/app.png)
 
-This project is a starting point for a Flutter application.
+## About
 
-A few resources to get you started if this is your first Flutter project:
+A one-screen Flutter app that shows a directory of students. The screen is composed
+from small, reusable `StatelessWidget` classes that receive all of their data through
+constructors. Nothing on the screen changes by itself, so the app uses no
+`StatefulWidget` and no `setState` — when the data changes, the parent rebuilds its
+children with the new values.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Widgets
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| Widget | Responsibility |
+| --- | --- |
+| `Student` | Immutable data class (`final` fields, `const` constructor) |
+| `DirectoryApp` | `MaterialApp` with the Material 3 theme (indigo color seed) |
+| `DirectoryScreen` | `Scaffold` with the `Campus Directory` `AppBar` and a `ListView` |
+| `SectionHeader` | Bold, colored heading with a `Divider` below it |
+| `StudentCard` | `Card` with a `CircleAvatar`, name, course and two `InfoRow`s |
+| `InfoRow` | An icon and a text label side by side in a `Row` |
+
+## Style customizations
+
+1. Indigo `colorSchemeSeed` for the app theme.
+2. Tinted scaffold background so the cards stand out.
+3. Uppercase, letter-spaced section heading in the primary color.
+4. Thicker divider tinted with the primary color.
+5. 16 px rounded corners on the student cards.
+6. `CircleAvatar` using `primaryContainer` with the student's first letter.
+7. Bold, tightly letter-spaced name style for the card headline.
+
+## Run it
+
+```bash
+flutter pub get
+flutter run   # pick Chrome, an emulator, or a device
+```
