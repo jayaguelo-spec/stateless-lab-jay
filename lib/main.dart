@@ -65,7 +65,17 @@ class DirectoryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Campus Directory',
-      theme: ThemeData(useMaterial3: true),
+      // CUSTOMIZATION 1: theme seed color is indigo instead of the default blue.
+      theme: ThemeData(
+        colorSchemeSeed: Colors.indigo,
+        useMaterial3: true,
+        // CUSTOMIZATION 2: tinted scaffold background so the cards stand out.
+        scaffoldBackgroundColor: const Color(0xFFF4F5FB),
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+          elevation: 0,
+        ),
+      ),
       home: const DirectoryScreen(),
     );
   }
@@ -79,10 +89,13 @@ class DirectoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Campus Directory'),
+        title: const Text(
+          'Campus Directory',
+          style: TextStyle(fontWeight: FontWeight.w700),
+        ),
       ),
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
         children: [
           const SectionHeader('Students'),
           const SizedBox(height: 12),
@@ -105,17 +118,27 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ColorScheme colors = Theme.of(context).colorScheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title.toUpperCase(),
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                // CUSTOMIZATION 3: uppercase, letter-spaced heading in the
+                // theme's primary color instead of plain black text.
                 fontWeight: FontWeight.w800,
+                letterSpacing: 1.4,
+                color: colors.primary,
               ),
         ),
         const SizedBox(height: 4),
-        const Divider(thickness: 2),
+        // CUSTOMIZATION 4: thicker divider tinted with the primary color.
+        Divider(
+          thickness: 2,
+          color: colors.primary.withValues(alpha: 0.35),
+        ),
       ],
     );
   }
@@ -129,7 +152,14 @@ class StudentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ColorScheme colors = Theme.of(context).colorScheme;
+
     return Card(
+      // CUSTOMIZATION 5: 16px rounded corners instead of the default small radius.
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      elevation: 2,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(
@@ -137,9 +167,16 @@ class StudentCard extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 26,
+              // CUSTOMIZATION 6: avatar uses the primaryContainer color and
+              // shows the first letter of the student's name.
+              backgroundColor: colors.primaryContainer,
+              foregroundColor: colors.onPrimaryContainer,
               child: Text(
                 student.name[0],
-                style: const TextStyle(fontSize: 22),
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(width: 16),
@@ -149,14 +186,20 @@ class StudentCard extends StatelessWidget {
                 children: [
                   Text(
                     student.name,
+                    // CUSTOMIZATION 7: name style is bold, larger and tightly
+                    // letter-spaced so it reads as the card's headline.
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w700,
+                          letterSpacing: -0.3,
                         ),
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 2),
                   Text(
                     student.course,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: colors.onSurfaceVariant,
+                        ),
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 10),
@@ -187,7 +230,11 @@ class InfoRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, size: 16),
+        Icon(
+          icon,
+          size: 16,
+          color: Theme.of(context).colorScheme.primary,
+        ),
         const SizedBox(width: 8),
         Expanded(
           child: Text(
