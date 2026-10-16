@@ -65,6 +65,8 @@ class DirectoryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Campus Directory',
+      // CUSTOMIZATION 8: turn off the red DEBUG ribbon in the top-right corner.
+      debugShowCheckedModeBanner: false,
       // CUSTOMIZATION 1: theme seed color is indigo instead of the default blue.
       theme: ThemeData(
         colorSchemeSeed: Colors.indigo,
