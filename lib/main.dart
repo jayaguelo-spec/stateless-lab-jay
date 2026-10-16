@@ -20,40 +20,34 @@ class Student {
 
 const List<Student> students = [
   Student(
-    name: 'Alice Santos',
+    name: 'Wendy Pasadillo',
     course: 'BS Information Technology',
     yearLevel: 3,
-    email: 'alice.santos@campus.edu',
+    email: 'wendy.pasadillo@campus.edu',
   ),
   Student(
-    name: 'Brian Cruz',
+    name: 'Maribel Corpuz',
     course: 'BS Computer Science',
     yearLevel: 2,
-    email: 'brian.cruz@campus.edu',
+    email: 'maribel.corpuz@campus.edu',
   ),
   Student(
-    name: 'Catherine Reyes',
+    name: 'Jonard Osa',
     course: 'BS Electronics Engineering',
     yearLevel: 4,
-    email: 'catherine.reyes@campus.edu',
+    email: 'jonard.osa@campus.edu',
   ),
   Student(
-    name: 'Daniel Lim',
+    name: 'Jimmy Abenoja',
     course: 'BS Mathematics',
     yearLevel: 1,
-    email: 'daniel.lim@campus.edu',
+    email: 'jimmy.abenoja@campus.edu',
   ),
   Student(
-    name: 'Elena Garcia',
+    name: 'Khen Lumindas',
     course: 'BS Information Systems',
     yearLevel: 3,
-    email: 'elena.garcia@campus.edu',
-  ),
-  Student(
-    name: 'Francis Mendoza',
-    course: 'BS Computer Engineering',
-    yearLevel: 2,
-    email: 'francis.mendoza@campus.edu',
+    email: 'khen.lumindas@campus.edu',
   ),
 ];
 
